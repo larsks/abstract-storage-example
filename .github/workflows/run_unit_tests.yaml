@@ -1,0 +1,66 @@
+name: Run unit tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  run-unit-tests-simple:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install test requirements
+        run: |
+          pip install pipenv
+          pipenv install -d
+
+      - name: Run tests
+        run: |
+          pipenv run pytest -v --cov=storage tests
+
+  run-unit-tests-postgres:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install test requirements
+        run: |
+          pip install pipenv
+          pipenv install -d
+
+      - name: Run tests
+        run: |
+          pipenv run pytest -v --postgres tests
+
+  run-unit-tests-mariadb:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install test requirements
+        run: |
+          pip install pipenv
+          pipenv install -d
+
+      - name: Run tests
+        run: |
+          pipenv run pytest -v --mariadb tests

@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+sqlalchemy = "*"
+psycopg2 = "*"
+"mysql.connector" = "*"
+
+[dev-packages]
+pytest-cov = "*"
+pytest = "*"
+pytest-github-actions-annotate-failures = "*"
+pytest-random-order = "*"
+docker = "*"
+mypy = "*"
+
+[requires]
+python_version = "3.11"
